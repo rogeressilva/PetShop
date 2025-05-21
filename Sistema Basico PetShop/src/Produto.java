@@ -1,9 +1,12 @@
+//Classe Produto
 public class Produto {
+    //Atributos basicos
     private String nome;
     private double valor;
     private String descricao;
     private int quantidade;
 
+    //Construtor
     public Produto(String nome, double valor, String descricao, int quantidade) {
         this.nome = nome;
         this.valor = valor;

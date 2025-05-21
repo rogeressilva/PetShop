@@ -1,26 +1,44 @@
-import java.util.Scanner;
+import java.util.Scanner; //Método para entrada de dados
 
+//Classe Principal
 public class Principal {
+    //Atributos basicos
     private Cliente[] clientes;
     private Funcionario[] funcionarios;
     private Produto[] estoque;
-    private Scanner scanner;
-    
+    private Scanner scanner;    
     private int numClientes;
     private int numFuncionarios;
     private int numProdutos;
-    private static final int TAMANHO_INICIAL = 10;
+    private static final int TAMANHO_INICIAL = 10; //Atributo para definir o tamanho inicial
 
+    // Construtor
     public Principal() {
-        clientes = new Cliente[TAMANHO_INICIAL];
-        funcionarios = new Funcionario[TAMANHO_INICIAL];
-        estoque = new Produto[TAMANHO_INICIAL];
-        scanner = new Scanner(System.in);
-        numClientes = 0;
-        numFuncionarios = 0;
-        numProdutos = 0;
+        clientes = new Cliente[TAMANHO_INICIAL]; //Cria um array de clientes, definindo o tamanho inicial
+        funcionarios = new Funcionario[TAMANHO_INICIAL];//Cria um array de funcionarios, definindo o tamanho inicial
+        estoque = new Produto[TAMANHO_INICIAL]; //Cria um array de produtos, definindo o tamanho inicial
+        scanner = new Scanner(System.in); //Cria um objeto Scanner para entrada de dados
+        numClientes = 0; //Para indicar que não há dados cadastrados
+        numFuncionarios = 0; //Para indicar que não há dados cadastrados
+        numProdutos = 0; //Para indicar que não há dados cadastrados
     }
 
+    //Método para busca no sistema
+    private void buscarInformacoes() {
+    System.out.println("\n=== Buscar Informações ===");    
+    }
+
+    //Método para remover informações do sistema
+    private void removerInformacoes() {
+        System.out.println("\n=== Remover Informações ===");
+    }
+
+    //Método para listar todos os dados cadastrados
+    private void listarTodos() {
+    System.out.println("\n=== Listar Todos ===");
+    }
+
+    //Método para executar o sistema    
     public void executar() {
         int opcao;
         do {
@@ -39,6 +57,7 @@ public class Principal {
             scanner.nextLine();
             
             switch (opcao) {
+                //Cada case chama um método específico para realizar uma ação
                 case 1: cadastrarCliente(); break;
                 case 2: cadastrarPet(); break;
                 case 3: cadastrarFuncionario(); break;
@@ -49,9 +68,10 @@ public class Principal {
                 case 0: System.out.println("Saindo do sistema..."); break;
                 default: System.out.println("Opção inválida!");
             }
-        } while (opcao != 0);
+        } while (opcao != 0); //O menu é exibido repetidamente até que o usuário digite 0 para sair
     }
 
+    //Métodos para cadastrar clientes
     private void cadastrarCliente() {
         if (numClientes == clientes.length) {
             aumentarArrayClientes();
@@ -73,6 +93,7 @@ public class Principal {
         clientes = novoArray;
     }
 
+    //Métodos para cadastrar pets
     private void cadastrarPet() {
         if (numClientes == 0) {
             System.out.println("Não há clientes cadastrados.");
@@ -135,6 +156,7 @@ public class Principal {
         System.out.println("Pet cadastrado com sucesso!");
     }
 
+    //Métodos para cadastrar funcionários
     private void cadastrarFuncionario() {
         if (numFuncionarios == funcionarios.length) {
             aumentarArrayFuncionarios();
@@ -192,6 +214,7 @@ public class Principal {
         funcionarios = novoArray;
     }
 
+    //Métodos para cadastrar produtos
     private void cadastrarProduto() {
         if (numProdutos == estoque.length) {
             aumentarArrayEstoque();
@@ -219,40 +242,41 @@ public class Principal {
         estoque = novoArray;
     }
 
-    // ... (other methods like buscarInformacoes, removerInformacoes, listarTodos would follow the same pattern)
-
     public static void main(String[] args) {
         Principal sistema = new Principal();
         sistema.executar();
     }
 }
 
-class Cliente {
-    private String nome;
-    private String endereco;
-    private Pet[] pets;
-    private int numPets;
-    private static final int TAMANHO_INICIAL_PETS = 5;
+    class Cliente {
+        private String nome;
+        private String endereco;
+        private Pet[] pets;
+        private int numPets;
+        private static final int TAMANHO_INICIAL_PETS = 5;
 
-    public Cliente(String nome, String endereco) {
-        this.nome = nome;
-        this.endereco = endereco;
-        this.pets = new Pet[TAMANHO_INICIAL_PETS];
-        this.numPets = 0;
-    }
-
-    public void adicionarPet(Pet pet) {
-        if (numPets == pets.length) {
-            aumentarArrayPets();
+        public Cliente(String nome, String endereco) {
+            this.nome = nome;
+            this.endereco = endereco;
+            this.pets = new Pet[TAMANHO_INICIAL_PETS];
+            this.numPets = 0;
         }
-        pets[numPets++] = pet;
-    }
 
-    private void aumentarArrayPets() {
-        Pet[] novoArray = new Pet[pets.length * 2];
-        System.arraycopy(pets, 0, novoArray, 0, pets.length);
-        pets = novoArray;
-    }
+        //Acabei recorrendo a uma IA, pois não consegui implementar o método getNome
+        public int getNome() {
+            throw new UnsupportedOperationException("Unimplemented method 'getNome'");
+        }
 
-    // ... (other methods)
-}
+        public void adicionarPet(Pet pet) {
+            if (numPets == pets.length) {
+                aumentarArrayPets();
+            }
+            pets[numPets++] = pet;
+        }
+
+        private void aumentarArrayPets() {
+            Pet[] novoArray = new Pet[pets.length * 2];
+            System.arraycopy(pets, 0, novoArray, 0, pets.length);
+            pets = novoArray;
+        }
+    }

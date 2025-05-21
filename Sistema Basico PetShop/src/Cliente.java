@@ -1,26 +1,37 @@
+//Classe Cliente
 public class Cliente {
+    //Atributos basicos
     private String nome;
     private String endereco;
-    private Pet[] pets;  // Array de pets
-    private int quantidadePets;  // Contador para controlar o número de pets
+    private Pet[] pets;  //Array de pets
+    private int quantidadePets;  //Contador para controlar o número de pets
 
-    // Tamanho máximo inicial do array
+    //Tamanho máximo inicial do array
     private static final int TAMANHO_INICIAL = 10;
 
+    // Construtor
     public Cliente(String nome, String endereco) {
-        this.nome = nome;
+        this.nome = nome;      // Inicialize o atributo nome
         this.endereco = endereco;
         this.pets = new Pet[TAMANHO_INICIAL];
         this.quantidadePets = 0;
     }
 
     // Getters e Setters
-    public String getNome() {
+     public String getNome() {
         return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getEndereco() {
         return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
     public Pet[] getPets() {
@@ -60,7 +71,7 @@ public class Cliente {
         pets = novoArray;
     }
 
-    @Override
+    @Override //Para garantir que a assinatura do método esteja correta
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Cliente: ").append(nome).append(", Endereço: ").append(endereco).append("\nPets:\n");
