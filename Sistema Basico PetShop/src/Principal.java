@@ -187,9 +187,7 @@ public class Principal {
             case 2:
                 System.out.print("Especialidade: ");
                 String especialidade = scanner.nextLine();
-                System.out.print("CRMV: ");
-                String crmv = scanner.nextLine();
-                funcionario = new Veterinario(nome, endereco, salario, especialidade, crmv);
+                funcionario = new Veterinario(nome, endereco, salario, especialidade);
                 break;
             case 3:
                 System.out.print("Departamento: ");

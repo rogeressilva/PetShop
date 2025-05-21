@@ -19,12 +19,24 @@ public class Produto {
         return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public double getValor() {
         return valor;
     }
 
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
     public String getDescricao() {
         return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public int getQuantidade() {
@@ -35,7 +47,7 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    @Override
+    @Override //Para garantir que a assinatura do método esteja correta
     public String toString() {
         return nome + " - R$" + valor + " (" + quantidade + " em estoque)";
     }

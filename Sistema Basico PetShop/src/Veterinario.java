@@ -1,23 +1,25 @@
+//Classe Veterinario herdando da classe Funcionario
 public class Veterinario extends Funcionario {
-    private String especialidade;
-    private String crmv;
+    //Atributos especificos
+    private String especialidade;  
 
-    public Veterinario(String nome, String endereco, double salario, String especialidade, String crmv) {
+    //Construtor
+    public Veterinario(String nome, String endereco, double salario, String especialidade) {
         super(nome, endereco, salario);
         this.especialidade = especialidade;
-        this.crmv = crmv;
     }
 
+    //Getters e Setters
     public String getEspecialidade() {
         return especialidade;
     }
 
-    public String getCrmv() {
-        return crmv;
+    public void setEspecialidade(String especialidade) {
+        this.especialidade = especialidade;
     }
 
-    @Override
+    @Override //Para garantir que a assinatura do método esteja correta
     public String toString() {
-        return super.toString() + ", Especialidade: " + especialidade + ", CRMV: " + crmv;
+        return super.toString() + ", Especialidade: " + especialidade;
     }
 }
