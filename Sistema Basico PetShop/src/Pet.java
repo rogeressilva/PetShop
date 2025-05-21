@@ -1,3 +1,4 @@
+//Atributos basicos
 public abstract class Pet {
     private String nome;
     private String raca;
